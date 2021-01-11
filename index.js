@@ -34,6 +34,8 @@ app.post('/', async (req, res) => {
 	req.on('error', e => res.status(500).send({ status: 'error', msg: e }));
 });
 
+app.use('/*', (req, res) => res.status(404).send({status: 'not-found', msg: 'try posting to / instead'}))
+
 app.listen(port, () => {
 	console.log('App listening on port ' + port);
 });
